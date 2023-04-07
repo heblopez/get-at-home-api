@@ -1,5 +1,5 @@
 # Set the Rails master key.
-ENV['RAILS_MASTER_KEY'] = 'd20bd0e75277681cef4ee4ae18b183a9772920e709d1f7c521bf745d393375db4ad49747a4528729788984121589468c285f8832a9d0363752fc6aa4291bd925'
+ENV['RAILS_MASTER_KEY'] = '4daa88f29f7a138e2262462ccd61592e'
 
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
