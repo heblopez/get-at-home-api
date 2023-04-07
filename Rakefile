@@ -11,4 +11,3 @@ namespace :assets do
     puts "Precompiling assets"
   end
 end
-
