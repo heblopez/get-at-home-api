@@ -147,6 +147,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
+    rack-cors (2.0.1)
+      rack (>= 2.0.0)
     rack-session (1.0.1)
       rack (< 3)
     rack-test (2.1.0)
@@ -183,8 +185,6 @@ GEM
     timeout (0.3.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2023.3)
-      tzinfo (>= 1.0.0)
     webrick (1.8.1)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -201,6 +201,7 @@ DEPENDENCIES
   faker
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-cors
   rails!
   rspec-rails (~> 6.0.1)
   tzinfo-data
