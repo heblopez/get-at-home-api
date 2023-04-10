@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
 
   def index
       properties = Property.all
-      render json: properties.as_json(method: :photo_urls), status: :ok
+      render json: properties.as_json(methods: :photo_urls), status: :ok
 
   end
 
