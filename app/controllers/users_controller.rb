@@ -7,9 +7,10 @@ class UsersController < ApplicationController
 
     if user.save
       properties.map { |property| user.users_props.create( property_id: property.id ) }
-      render json: user, status: :created
+      new_user = user.slice(:id, :name, :email, :phone, :role, :token).merge({})
+      render json: new_user, status: :created
     else
-      respond_unauthorized("Could not be created, username already exists")
+      respond_unauthorized("Could not be created, email already exists")
     end
   end
 
