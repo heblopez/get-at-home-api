@@ -35,8 +35,9 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem "rack-cors"
 
-#Unsplash for random images in seed
-gem 'unsplash'
+#Unsplash for random images in seeds
+gem "unsplash"
+gem "cloudinary"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
