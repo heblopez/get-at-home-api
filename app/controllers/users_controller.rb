@@ -27,8 +27,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     if user
       properties = user.properties
-      data_user = user.slice(:id, :name, :email, :phone, :role, :token).merge({})
-      render json: { user: data_user, properties:properties.as_json(methods: :photo_urls) }, status: :ok
+      render json: { id: user.id, name: user.name,email: user.email, phone: user.phone, role: user.role, token: user.token, properties: properties.as_json(methods: :photo_urls) }, status: :ok
     else
       respond_unauthorized("User not found")
     end
