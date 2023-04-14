@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_04_12_181834) do
     t.integer "bathrooms"
     t.integer "area"
     t.boolean "pets_allowed"
+    t.boolean "status", default: true
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,7 +77,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_04_12_181834) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["phone"], name: "index_users_on_phone", unique: true
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 

@@ -11,6 +11,7 @@ user_test = User.create(name: "testino", email: "testino@mail.com", password: "1
   valueRandom = Faker::Number.between(from: 200, to: 5000)
   
   property = Property.create(address: Faker::Address.full_address, type_operation: operation, type_property: property, monthly_rent: valueRandom, maintanance: valueRandom, price: valueRandom,pets_allowed: Faker::Boolean.boolean, description: Faker::Lorem.paragraph , bedrooms: numberRandom, bathrooms: numberRandom, area: Faker::Number.between(from: 1, to: 200))
+  user_test.properties << property
   2.times do
     search_photos = Unsplash::Photo.search("hoteles")
     random_photo = search_photos.sample
@@ -20,7 +21,7 @@ user_test = User.create(name: "testino", email: "testino@mail.com", password: "1
   end
 end
 
-properties = Property.all
+#properties = Property.all
 
-properties.map{|property| user_test.users_props.create(property_id: property.id)}
+#properties.map{|property| user_test.users_props.create(property_id: property.id)}
 puts "End DB seed"

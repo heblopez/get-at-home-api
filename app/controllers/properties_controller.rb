@@ -16,6 +16,7 @@ class PropertiesController < ApplicationController
           property.photos.create(image: image["url"])
         end
       end
+      current_user.properties << property
       render json: property.as_json(methods: :photo_urls), status: :created
     else
       respond_unauthorized("Error! the property could not be created")
@@ -24,6 +25,7 @@ class PropertiesController < ApplicationController
 
   def update
     property = Property.find(params[:id])
+    property = current_user.properties.find(params[:id])
 
     if property.update(property_params)
       photos = Array.wrap(params[:photos])
@@ -33,10 +35,12 @@ class PropertiesController < ApplicationController
           property.photos.create(image: image["url"])
         end
       end
-      render json: property, status: :ok
+      render json: property.as_json(methods: :photo_urls), status: :ok
     else
       respond_unauthorized("Error! the property could not be updated")
     end
+    rescue ActiveRecord::RecordNotFound
+      respond_unauthorized("Error! there is no property id associated with this user")
   end
 
   def show
