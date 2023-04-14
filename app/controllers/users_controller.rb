@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     properties = Property.all
 
     if user.save
-      properties.map { |property| user.users_props.create( property_id: property.id ) }
+      #properties.map { |property| user.users_props.create( property_id: property.id ) }
       new_user = user.slice(:id, :name, :email, :phone, :role, :token).merge({})
       render json: new_user, status: :created
     else
@@ -26,7 +26,8 @@ class UsersController < ApplicationController
   def show
     user = User.find(params[:id])
     if user
-      render json: user, status: :ok
+      properties = user.properties
+      render json: { user: user, properties:properties.as_json(methods: :photo_urls) }, status: :ok
     else
       respond_unauthorized("User not found")
     end

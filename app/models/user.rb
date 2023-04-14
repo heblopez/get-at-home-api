@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :phone, uniqueness: true, allow_nil: true
   validates :password, length: { minimum: 6 }, if: :password_required?
 
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i,
@@ -20,5 +19,11 @@ class User < ApplicationRecord
 
   def password_required?
     password.present? || !persisted?
+  end
+  
+  def photo_urls
+    photos.map do |photo|
+      photo.image
+    end
   end
 end
