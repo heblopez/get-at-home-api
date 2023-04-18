@@ -59,6 +59,7 @@ class PropertiesController < ApplicationController
       photo.destroy
     end
     if property
+      property.destroy
       head :no_content
     else
       respond_unauthorized("Error! the property could not be deleted")
@@ -68,6 +69,6 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.permit(:address, :type_operation, :monthly_rent, :maintanance, :price, :type_property, :bedrooms, :bathrooms, :area, :pets_allowed, :description, :photos )
+    params.permit(:address, :type_operation, :monthly_rent, :maintanance, :price, :type_property, :bedrooms, :bathrooms, :area, :pets_allowed, :status, :description, :photos )
   end
 end

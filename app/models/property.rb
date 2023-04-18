@@ -1,5 +1,5 @@
 class Property < ApplicationRecord
-  has_many :users_props, class_name: "UsersProp"
+  has_many :users_props, class_name: "UsersProp", dependent: :destroy
   has_many :users, through: :users_props
   has_many :photos, dependent: :destroy
 
