@@ -47,8 +47,9 @@ class PropertiesController < ApplicationController
     property = Property.find(params[:id])
     if property
       users = property.users.with_role('landlord')
-      users_json = users.map {|user| { id: user.id, name: user.name, email: user.email, role: user.role } }
-      render json: { property: property.as_json(methods: :photo_urls), user: users_json }, status: :ok
+      users_json = users.map {|user| { id: user.id, name: user.name, email: user.email, phone: user.phone, role: user.role } }
+      user_json = users_json.first
+      render json: { property: property.as_json(methods: :photo_urls), landlord_user: user_json }, status: :ok
     else
       respond_unauthorized("Error! the property could not be found")
     end
