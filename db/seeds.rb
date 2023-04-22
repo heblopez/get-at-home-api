@@ -2,7 +2,7 @@ require "faker"
 
 puts "Start DB seed"
 
-user_test = User.create(name: "testino", email: "testino@mail.com", password: "123456")
+user_test = User.create(name: "testino", email: "testino@mail.com", password: "123456", role:"landlord")
 
 (1..20).each do |i|
   operation = Faker::Boolean.boolean ? 'rent' : 'sale'
@@ -13,7 +13,7 @@ user_test = User.create(name: "testino", email: "testino@mail.com", password: "1
   property = Property.create(address: Faker::Address.full_address, type_operation: operation, type_property: property, monthly_rent: valueRandom, maintanance: valueRandom, price: valueRandom,pets_allowed: Faker::Boolean.boolean, description: Faker::Lorem.paragraph , bedrooms: numberRandom, bathrooms: numberRandom, area: Faker::Number.between(from: 1, to: 200))
   user_test.properties << property
   2.times do
-    search_photos = Unsplash::Photo.search("hoteles")
+    search_photos = Unsplash::Photo.search("hoteles?sig=#{i}")
     random_photo = search_photos.sample
     file = URI.open(random_photo.urls["regular"])
     image = Cloudinary::Uploader.upload(file)

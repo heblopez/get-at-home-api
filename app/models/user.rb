@@ -26,4 +26,8 @@ class User < ApplicationRecord
       photo.image
     end
   end
+
+  def users
+    user.select
+  end
 end
