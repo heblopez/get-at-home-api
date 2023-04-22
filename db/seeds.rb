@@ -2,7 +2,7 @@ require "faker"
 
 puts "Start DB seed"
 
-user_test = User.create(name: "testino", email: "testino@mail.com", password: "123456", role:"landlord")
+user_test = User.create(name: "testino", email: "testino@mail.com", password: "123456", phone: "999777889" role:"landlord")
 
 (1..20).each do |i|
   operation = Faker::Boolean.boolean ? 'rent' : 'sale'
