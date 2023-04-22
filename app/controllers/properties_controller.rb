@@ -46,7 +46,7 @@ class PropertiesController < ApplicationController
   def show
     property = Property.find(params[:id])
     if property
-      render json: property.as_json(methods: [:photo_urls, :users]), status: :ok
+      render json: property.as_json(methods: :photo_urls, include: {users: {only: [:id, :name, :email, :phone, :role]}}), status: :ok
     else
       respond_unauthorized("Error! the property could not be found")
     end
