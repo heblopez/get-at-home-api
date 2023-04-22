@@ -30,4 +30,8 @@ class User < ApplicationRecord
   def users
     user.select
   end
+
+  def self.with_role(role)
+    where(role: role)
+  end
 end
