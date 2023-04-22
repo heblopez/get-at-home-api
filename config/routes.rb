@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     get "/logout" => "sessions#destroy"
 
     resources :users, only: %i[create show update] do
-        resources :favorites, only: %i[index update]
+        resources :favorites, only: %i[index destroy]
         post '/favorites/:id', to: 'favorites#create'
-        resources :contacted, only: %i[index update]
+        resources :contacted, only: %i[index destroy]
         post '/contacted/:id', to: 'contacted#create'
     end
 

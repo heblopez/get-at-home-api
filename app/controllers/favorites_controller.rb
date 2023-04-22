@@ -17,17 +17,17 @@ class FavoritesController < ApplicationController
     end
   end
 
-  def update
+  def destroy
     user = User.find(params[:user_id])
     property = Property.find(params[:id])
-    favorite = user.users_props.where(property_id: property.id)
+    # favorite = user.users_props.where(property_id: property.id)
+    favorite = UsersProp.find_by(user_id: user.id, property_id: property.id, favorite: true)
 
-    if favorite.exists?(favorite: [nil, false])
-      favorite.update(favorite: true)
-      render json: favorite, status: :ok
+    if favorite
+      favorite.destroy
+      head :no_content
     else
-      favorite.update(favorite: false) 
-      render json: favorite, status: :ok
+      render json: { error: "Favorite could not be deleted" }
     end
   end
 end

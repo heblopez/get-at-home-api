@@ -17,14 +17,17 @@ class ContactedController < ApplicationController
     end
   end
 
-  def update
+  def destroy
     user = User.find(params[:user_id])
     property = Property.find(params[:id])
-    contacted = user.users_props.where(property_id: property.id)
+    # contacted = user.users_props.where(property_id: property.id)
+    contacted = UsersProp.find_by(user_id: user.id, property_id: property.id, contacted: true)
 
-    if contacted.exists?(contacted: [nil, false])
-      contacted.update(contacted: true)
-      render json: contacted, status: :ok
+    if contacted
+      contacted.destroy
+      head :no_content
+    else
+      render json: { error: "Contacted could not be deleted" }
     end
   end
 end
