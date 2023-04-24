@@ -29,11 +29,14 @@
 ### Favorites
 
 - `GET /users/:id/favorites`: Returns a list of the properties marked as favorites by a specific user.
-- `PATCH /users/:user_id/favorites/:property_id`: Update or change the favorite status that a user has for a specific property.
+- `POST /users/:user_id/favorites/:property_id`: Create a new favorite property record for a specific user. 
+- `DELETE /users/:user_id/favorites/:property_id`: Remove the favorite property record for a specific user.
 
 ### Contacted
 
 - `GET /users/:id/contacted`: Returns a list of properties contacted by a specific user.
+- `POST /users/:user_id/contacted/:property_id`: Create a new contacted property record for a specific user. 
+- `DELETE /users/:user_id/contacted/:property_id`: Remove the contacted property record for a specific user.
 
 ## Authors
 
