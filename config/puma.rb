@@ -1,6 +1,3 @@
-# Set the Rails master key.
-ENV['RAILS_MASTER_KEY'] = '4daa88f29f7a138e2262462ccd61592e'
-
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
 # Any libraries that use thread pools should be configured to match
